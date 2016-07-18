@@ -2,22 +2,12 @@ var React = require('react');
 var ListItem = require('./list-item');
 
 module.exports = React.createClass({
-  render: function() {
-    console.log(this.props);
-    return (
-      <div>
-        {this.renderList()}
-      </div>
-    )
-  },
   renderList: function() {
-    if(this.props.items && Object.keys(this.props.items).length === 0) {
+    if(!this.props.items) {
       //Object.keys pass in object, returns an array
       //the first entry of object, the id
       return (
-        <h4>
-          Add a todo to get started
-        </h4>
+        <h6>Add a to-do to get started</h6>
       )
     }else {
       var children = [];
@@ -35,5 +25,13 @@ module.exports = React.createClass({
       }
       return children;
     }
+  },
+  render: function() {
+    console.log(this.props);
+    return (
+      <div>
+        {this.renderList()}
+      </div>
+    )
   }
 });
